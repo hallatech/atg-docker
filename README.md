@@ -12,3 +12,6 @@ Requires you to download the necessary Oracle Commerce files from Oracle Edelive
 - oracle-commerce-core: From JDK8 build the ATG core image (+- 2.28GB)
 - oracle-commerce-csc: From core build the ATG CSC image (+- 3.27GB)
 - oracle-commerce-crs: From csc build the ATG CRS image (+- 4.52GB)
+
+# Automated database migrations
+- See `flyway/README` for an example docker-compose configuration for creating a ATG Flyway migration.
