@@ -1,0 +1,35 @@
+version: '3'
+services:
+  flyway:
+    image: boxfuse/flyway
+    command: -url=jdbc:oracle:thin:@//172.21.0.2:1521/ORCLPDB1 -user=core -password=core migrate
+    volumes: 
+      - sql:/flyway/sql
+      - drivers:/flyway/drivers
+    depends_on:
+      - db
+
+  db:
+    image: oracle/database:12.2.0.1-se2
+    ports:
+      - 1521:1521
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+      - drivers:/flyway/drivers
+      - ./scripts:/scripts
+    environment:
+      - ORACLE_PWD=Admin123
+
+  atg:
+    image: hallatech/oc-core:11.3
+    command: tail -f /dev/null
+    volumes: 
+      - sql:/flyway/sql
+      - drivers:/flyway/drivers
+      - ./scripts:/scripts
+
+volumes:
+  sql:
+  oracle_data:
+  drivers:
+
