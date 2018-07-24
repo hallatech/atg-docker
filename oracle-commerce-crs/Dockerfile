@@ -43,11 +43,4 @@ USER root
 RUN cd $TEMP_DIR && \
     chmod u+x $TEMP_DIR/$CRS_BIN && \
     ./$CRS_BIN -f $TEMP_DIR/$SILENT_FILE_NAME -i silent && \
-    chown -R atg:atg /opt/ATG && \
     rm $TEMP_DIR/$CRS_BIN $TEMP_DIR/$SILENT_FILE_NAME
-
-WORKDIR /home/atg
-USER atg
-
-# Define default command to start bash.
-CMD ["bash"]

@@ -7,6 +7,7 @@ Requires you to download the necessary Oracle Commerce files from Oracle Edelive
 - Creates the 'atg' user
 - Installs ATG into /opt
 
+# Images
 - jdk8: Builds the initial JDK8 latest version image (+- 499MB)
 - oracle-commerce-core: From JDK8 build the ATG core image (+- 2.28GB)
 - oracle-commerce-csc: From core build the ATG CSC image (+- 3.27GB)

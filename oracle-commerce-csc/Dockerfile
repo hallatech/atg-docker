@@ -41,20 +41,7 @@ COPY $CSC_BIN $SILENT_FILE_NAME $TEMP_DIR/
 # ------------------------------------------------------------
 USER root
 
-#RUN whoami
-#RUN ls -la $TEMP_DIR
-
 RUN cd $TEMP_DIR && \
     chmod u+x $TEMP_DIR/$CSC_BIN && \
     ./$CSC_BIN -f $TEMP_DIR/$SILENT_FILE_NAME -i silent && \
-    chown -R atg:atg /opt/ATG && \
     rm $TEMP_DIR/$CSC_BIN $TEMP_DIR/$SILENT_FILE_NAME
-
-#RUN ls -la $ATG_HOME | grep CSC
-#RUN ls -la $TEMP_DIR
-
-WORKDIR /home/atg
-USER atg
-
-# Define default command to start bash.
-CMD ["bash"]

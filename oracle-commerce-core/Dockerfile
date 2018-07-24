@@ -42,16 +42,7 @@ COPY $ATG_BIN $SILENT_FILE_NAME /var/tmp/
 # Install and configure Oracle Core Commerce
 # Adjust file permissions, go to temp dir as user 'atg' to proceed with OC installation
 # ------------------------------------------------------------
-RUN useradd -m -s /bin/bash atg && \
-    echo atg:atg | chpasswd && \
-    chmod 755 $TEMP_DIR/$ATG_BIN && \
+RUN chmod 755 $TEMP_DIR/$ATG_BIN && \
     cd $TEMP_DIR && \
     ./$ATG_BIN -f $TEMP_DIR/$SILENT_FILE_NAME -i silent && \
-    chown -R atg:atg /opt/ATG && \
     rm $TEMP_DIR/$ATG_BIN $TEMP_DIR/$SILENT_FILE_NAME
-
-WORKDIR /home/atg
-USER atg
-
-# Define default command to start bash.
-CMD ["bash"]
